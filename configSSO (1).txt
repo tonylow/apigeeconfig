@@ -6,8 +6,8 @@ IP2=35.240.51.23
 MSIP=$IP1
 MGMT_PORT=8080
 # Edge sys admin username and password as set when you installed Edge.
-ADMIN_EMAIL=opdk@google.com
-APIGEE_ADMINPW=Admin123
+ADMIN_EMAIL=123@abc.com
+APIGEE_ADMINPW=XXXXXX
 # Set the protocol for the Edge management API. Default is http.
 # Set to https if you enabled TLS on the management API.
 MS_SCHEME=http
