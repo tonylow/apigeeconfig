@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="apitemplate">
+    <Basepaths>/apitemplate</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1594465030915</CreatedAt>
+    <CreatedBy>tonylow@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>apitemplate</DisplayName>
+    <LastModifiedAt>1594465878524</LastModifiedAt>
+    <LastModifiedBy>tonylow@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:0a5465bc6b60a3ed1ad21b10fbda60258360e33182991106c16d0c8a1b5b5c16a48bdbbfeaf7a7f6b39dd7980bad563fa775f1cf8e2cb376014b4d1f84425a4d</ManifestVersion>
+    <Policies>
+        <Policy>Spike-Arrest-1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
