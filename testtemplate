@@ -1,0 +1,2 @@
+{% target URL %}https://httpbin.org/get{% endblock %}
+{% BasePath %}testtemplate{% endblock %}
