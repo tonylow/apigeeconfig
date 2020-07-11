@@ -10,6 +10,6 @@
     <Response/>
   </PostFlow>
   <HTTPTargetConnection>
-    <URL>https://httpbin.org/get</URL>
+    <URL>{% target URL %}{% endblock %}</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
