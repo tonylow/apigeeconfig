@@ -1,0 +1,1000 @@
+  127  cd install/
+  128  ls
+  129  less kubernetes/helloworld-deployment.yaml
+  130  cd 
+  131  cd istio-workshop/
+  132  less kubernetes/helloworld-deployment.yaml
+  133  !
+  134  istioctl kube-inject -f kubernetes/helloworld-deployment.yaml | less
+  135  kubectl label namespace default istio-injection=enabled
+  136  kubectl get namespace -L istio-injection
+  137  cd ~/istio-workshop
+  138  kubectl apply -f kubernetes/
+  139  kubectl get pod
+  140  kubectl describe pods helloworld-service-v1-58c558ddfb-q4j76
+  141  kubectl get pod
+  142  watch kubectl get deployment
+  143  clear
+  144  kubectl get svc guestbook-ui
+  145  curl 34.87.104.226
+  146  kubectl get svc istio-ingressgateway -n istio-system -o yaml
+  147  kubectl get pods -n istio-system
+  148  kubectl port-forward istio-ingressgateway-... -n istio-system 15000:15000
+  149  kubectl port-forward istio-ingressgateway-6894bd895b-wslq9   -n istio-system 15000:15000
+  150  export INGRESS_IP=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+  151  echo $INGRESS_IP
+  152  curl http://$INGRESS_IP
+  153  kubectl apply -f istio/guestbook-gateway.yaml
+  154  more istio/guestbook-gateway.yaml
+  155  kubectl get pods -l istio=ingressgateway --all-namespaces
+  156  kubectl get pods -l istio=ingressgateway --al
+  157  kubectl get pods -l istio=ingressgateway --all-namespaces
+  158  curl -v http://$INGRESS_IP
+  159  kubectl apply -f istio/guestbook-ui-vs.yaml
+  160  more istio/guestbook-ui-vs.yaml
+  161  curl http://$INGRESS_IP
+  162  more istio/guestbook-ui-vs.yaml
+  163  while sleep 0.5; do curl http://$INGRESS_IP; done
+  164  while sleep 0.005; do curl http://$INGRESS_IP; done
+  165  kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana \
+  166    -o jsonpath='{.items[0].metadata.name}') 3000:3000
+  167  kubectl -n istio-system port-forward   $(kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[0].metadata.name}')   9090:9090
+  168  kubectl -n istio-system port-forward   $(kubectl -n istio-system get pod -l app=servicegraph -o jsonpath='{.items[0].metadata.name}')   8088:8088
+  169  kubectl -n istio-system port-forward $(kubectl -n istio-system get po -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686
+  170  kubectl apply -f kubernetes-v2/guestbook-ui-deployment-v2.yaml
+  171  more kubernetes-v2/guestbook-ui-deployment-v2.yaml
+  172  more istio/guestbook-ui-dest.yaml
+  173  kubectl apply -f istio/guestbook-ui-dest.yaml
+  174  more istio/guestbook-ui-v1-vs.yaml
+  175  kubectl apply -f istio/guestbook-ui-v1-vs.yaml
+  176  more istio/guestbook-ui-80p-v1-vs.yaml
+  177  kubectl apply -f istio/guestbook-ui-80p-v1-vs.yaml
+  178  more istio/guestbook-ui-chrome-vs.yaml
+  179  more istio/guestbook-ui-delay-vs.yaml
+  180  kubectl apply -f istio/guestbook-service-503-vs.yaml
+  181  kubectl delete -f istio/guestbook-service-503-vs.yaml
+  182  more  istio/guestbook-service-retry-vs.yaml
+  183  kubectl apply -f istio/guestbook-service-retry-vs.yaml
+  184  more istio/guestbook-service-dest.yaml
+  185  more istio/deny-guestbook-service.yaml
+  186  pwd
+  187  cd ..
+  188  ls
+  189  cd apigee-istio/
+  190  ls
+  191  more samples/apigee/*.yaml
+  192  cd samples
+  193  ls
+  194  cd apigee/
+  195  ls
+  196  ls -l
+  197  more definitions.yaml 
+  198  more *.yaml¦grep helloworld
+  199  cat *.yaml¦grep helloworld
+  200  ls
+  201  cat *.yaml
+  202  cat *.yaml ¦ grep hello
+  203  cat *.yaml ¦ grep helloworld
+  204  cat *.yam|grep helloworld
+  205  cat *.yaml|grep helloworld
+  206  pwd
+  207  ls -l
+  208  cd 
+  209  git clone https://github.com/adorsys/psd2-accelerator.git
+  210  cd psd2-accelerator/
+  211  ls-l
+  212  ls -l
+  213  https://github.com/nas-hub/apigee-as-oidc-idp-for-existing-authentication-service.git
+  214  git clone https://github.com/nas-hub/apigee-as-oidc-idp-for-existing-authentication-service.git
+  215  cd apigee-as-oidc-idp-for-existing-authentication-service/
+  216  ls
+  217  more config.properties 
+  218  lz -l
+  219  ls -l
+  220  blaze
+  221  gcloud config set projec
+  222  gcloud config set project tonylow
+  223  pwd
+  224  ls
+  225  ls -l
+  226  git clone https://github.com/istio/istio.git
+  227  cd istio
+  228  ls
+  229  cd samples
+  230  ls
+  231  cd websockets/
+  232  ls
+  233  gcloud config set project apigee-training-del
+  234  cd ..
+  235  apigee-training-del
+  236  kubectl create -f <(istioctl kube-inject -f samples/websockets/app.yaml)
+  237  pws
+  238  pwd
+  239  ls
+  240  cd istio
+  241  kubectl create -f <(istioctl kube-inject -f samples/websockets/app.yaml)
+  242  kubectl create -f samples/websockets/app.yaml
+  243  kubectl create -f samples/websockets/route.yaml
+  244  kubectl get svc istio-ingressgateway -n istio-system
+  245  cd samples/
+  246  ls
+  247  cd websockets/
+  248  ls
+  249  more app.yaml 
+  250  clear
+  251  ls -l
+  252  more route.yaml 
+  253  kubectl create -f <(istioctl kube-inject -f samples/websockets/route.yaml)
+  254  more samples/websockets/route.yaml 
+  255  vi route.yaml 
+  256  cd ..
+  257  history 
+  258  kubectl create -f samples/websockets/route.yaml
+  259  kubectl delete -f samples/websockets/route.yaml
+  260  kubectl create -f samples/websockets/route.yaml
+  261  pwd
+  262  cd ..
+  263  git clone https://github.com/hiroakis/tornado-websocket-example.git
+  264  cd tornado-websocket-example
+  265  pip install -r requirements.txt
+  266  python app.py
+  267  python 
+  268  ls-l
+  269  ls -l
+  270  python app.py
+  271  more app.py 
+  272  ls
+  273  more Dockerfile 
+  274  docker run
+  275  docker build 
+  276  ls
+  277  ls -l
+  278  docker build Dockerfile
+  279  docker build 
+  280  docker build --help
+  281  docker build --file Dockerfile
+  282  docker build --file 
+  283  cleae
+  284  clear
+  285  gcloud config set project apigee-training-del
+  286  clear
+  287  pwd
+  288  ls-l
+  289  ls -l
+  290  cd tornado-websocket-example/
+  291  ls
+  292  python app.py
+  293  pwd
+  294  ls
+  295  cd ..
+  296  ;ls
+  297  ls
+  298  pwd
+  299  ls
+  300  cd tornado-websocket-example/
+  301  ls
+  302  docker build -t hiroakis/tornade-websocket-example .
+  303  git clone https://github.com/TooTallNate/Java-WebSocket.git
+  304  mvn
+  305  cd Java-WebSocket/
+  306  mvn build 
+  307  mvn install
+  308  ls -l
+  309  cd target
+  310  ls
+  311  cd ..
+  312  ls
+  313  cd ..
+  314  ls
+  315  cd Java-WebSocket/
+  316  ls
+  317  mvn run
+  318  mvn package
+  319  ls -l
+  320  gcloud beta compute --project "apigee-training-del" ssh --zone "asia-southeast1-b" "apigeedemo-aio"
+  321  ssh 10.148.0.24
+  322  ls
+  323  gcloud beta compute --project "apigee-training-del" ssh --zone "asia-southeast1-b" "apigeedemo-aio"
+  324  ssh
+  325  ssh 10.148.0.24
+  326  gcloud beta compute --project "apigee-training-del" ssh --zone "asia-southeast1-b" "apigeedemo-aio"
+  327  gcloud
+  328  ssh
+  329  ls
+  330  pwd
+  331  gcloud config set project project-id
+  332  gcloud config set compute/region compute-region
+  333  OKEN=$(gcloud auth print-access-token)
+  334  TOKEN=$(gcloud auth print-access-token)
+  335  echo $TOKEN
+  336  curl -H "Authorization: Bearer $TOKEN" -X POST -H "content-type:application/json"   -d '{
+  337      "name":"proposed_org_ID",
+  338      "displayName":"display_name",
+  339      "description":"organization_description",
+  340      "analyticsRegion":"analytics_region"
+  341    }'   "https://apigee.googleapis.com/v1/organizations?parent=projects/project_ID"
+  342  curl -H "Authorization: Bearer $TOKEN" -X POST -H "content-type:application/json"   -d '{
+  343      "name":"proposed_org_ID",
+  344      "displayName":"display_name",
+  345      "description":"organization_description",
+  346      "analyticsRegion":"analytics_region"
+  347    }'   "https://apigee.googleapis.com/v1/organizations?parent=projects/apac-cs-hybrid-demo7"
+  348  curl -H "Authorization: Bearer $TOKEN" -X POST -H "content-type:application/json"   -d '{
+  349      "name":"proposed_org_ID",
+  350      "displayName":"display_name",
+  351      "description":"organization_description",
+  352      "analyticsRegion":"analytics_region"
+  353    }'   "https://apigee.googleapis.com/v1/organizations?parent=projects/apac-cs-hybrid-demo7"
+  354  clear
+  355  curl -H "Authorization: Bearer $TOKEN" -X POST -H "content-type:application/json"   -d '{
+  356      "name":"apigee-demo",
+  357      "displayName":"display_name",
+  358      "description":"organization_description",
+  359      "analyticsRegion":"analytics_region"
+  360    }'   "https://apigee.googleapis.com/v1/organizations?parent=projects/apac-cs-hybrid-demo7"
+  361  clear
+  362  curl -H "Authorization: Bearer $TOKEN" -X POST -H "content-type:application/json"   -d '{
+  363      "name":"apigee-demo",
+  364      "displayName":"asia-east1",
+  365      "description":"organization_description",
+  366      "analyticsRegion":"analytics_region"
+  367    }'   "https://apigee.googleapis.com/v1/organizations?parent=projects/apac-cs-hybrid-demo7"
+  368  clear
+  369  curl -H "Authorization: Bearer $TOKEN" -X POST -H "content-type:application/json"   -d '{
+  370      "name":"apigee-demo-tl2307",
+  371      "displayName":"apigee-demo-tl2307",
+  372      "description":"apigee-demo-tl2307",
+  373      "analyticsRegion":"asia-east1"
+  374    }'   "https://apigee.googleapis.com/v1/organizations?parent=projects/apac-cs-hybrid-demo7"
+  375  curl -H "Authorization: Bearer $TOKEN"   "https://apigee.googleapis.com/v1/organizations"
+  376  gcloud components install kubectl
+  377  gcloud container clusters create cluster-name --machine-type "n1-standard-4" --num-nodes "3" --enable-autoscaling --min-nodes "3" --max-nodes "6"
+  378  gcloud container clusters create cluster-name --machine-type "n1-standard-4" --num-nodes "3" --enable-autoscaling --min-nodes "3" --max-nodes "6" --zone "asia-east1" --region "asia-east1"
+  379  clear
+  380  gcloud config set compute/region asia-east1
+  381  gcloud config set compute/zone asia-east1
+  382  gcloud container clusters create cluster-name --machine-type "n1-standard-4" --num-nodes "3" --enable-autoscaling --min-nodes "3" --max-nodes "6" --zone "asia-east1" --region "asia-east1"
+  383  gcloud container clusters create cluster-name --machine-type "n1-standard-4" --num-nodes "3" --enable-autoscaling --min-nodes "3" --max-nodes "6" 
+  384  ubectl config get-contexts
+  385  kubectl config get-contexts
+  386  kubectl config use-context gke_apac-cs-hybrid-demo7_asia-east1_cluster-name 
+  387  kubectl config current-context
+  388  gcloud container clusters get-credentials gke_apac-cs-hybrid-demo7_asia-east1_cluster-name
+  389  gcloud container clusters get-credentials cluster-name
+  390  ubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user $(gcloud config get-value account)
+  391  kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user $(gcloud config get-value account)
+  392  curl -LO     https://storage.googleapis.com/apigee-public/apigee-hybrid-setup/$(curl -s \
+  393      https://storage.googleapis.com/apigee-public/apigee-hybrid-setup/current-version.txt)/apigeectl_linux_64.tar.gz
+  394  mkdir apigeectl
+  395  cd apigeectl/
+  396  cd..
+  397  cd ..
+  398  tar xvzf apigeectl_linux_64.tar.gz -C apigeectl
+  399  cd apigeectl/
+  400  ls -l
+  401  mv apigeectl_1.1.0-3c87bc2_linux_64 apigeectl
+  402  cd apigeectl/
+  403  export APIGEECTL_HOME=$PWD
+  404  apigeectl
+  405  ls
+  406  ./apigeectl 
+  407  mkdir hybrid-files
+  408  ls
+  409  ls -l
+  410  pwd && ls
+  411  cd hybrid-files
+  412  mkdir overrides
+  413  mkdir service-accounts
+  414  mkdir certs
+  415  ln -s $APIGEECTL_HOME/tools tools
+  416  ln -s $APIGEECTL_HOME/config config
+  417  ln -s $APIGEECTL_HOME/templates templates
+  418  ln -s $APIGEECTL_HOME/plugins plugins
+  419  ls -l | grep ^l
+  420  ./tools/create-service-account apigee-metrics ./service-accounts
+  421  /tools/create-service-account apigee-synchronizer ./service-accounts
+  422  ./tools/create-service-account apigee-udca ./service-accounts
+  423  ./tools/create-service-account apigee-synchronizer ./service-accounts
+  424  gcloud config set project apac-cs-hybrid-demo7
+  425  ./tools/create-service-account apigee-synchronizer ./service-accounts
+  426  ./tools/create-service-account apigee-udca ./service-accounts
+  427  ./tools/create-service-account apigee-mart ./service-accounts
+  428  ./tools/create-service-account apigee-cassandra ./service-accounts
+  429  ./tools/create-service-account apigee-logger ./service-accounts
+  430  ls ./service-accounts
+  431  openssl req  -nodes -new -x509 -keyout ./certs/keystore.key -out     ./certs/keystore.pem -subj '/CN=mydomain.net' -days 3650
+  432  ls
+  433  ls -l
+  434   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  435  ls
+  436  ls -l
+  437   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  438  /s /tmp
+  439  ls /tmp
+  440  ls -l /tmp
+  441  cd tmux-1000
+  442  sudo chmod 777 tmux-1000
+  443  more tmpyNCWzb
+  444   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  445  ls /tmp
+  446   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  447  kubectl
+  448  kubectl apply service/guestbook-ui
+  449  kubectl
+  450   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  451  kubectl apply
+  452  clear
+  453  kubectl
+  454  kubectl condig
+  455  kubectl config
+  456   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  457   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl get service guestbook-ui -o yaml
+  458   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  459  cd service
+  460   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl get service guestbook-ui -o yaml
+  461   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  462   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl get service guestbook-ui -o yaml
+  463  cd /tmp
+  464  ls
+  465   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  466   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl edit service guestbook-ui
+  467   gcloud container clusters get-credentials guestbook --region asia-southeast1 --project apigee-training-del  && kubectl get service guestbook-ui -o yaml
+  468  gcloud config set compute/region asia-east1
+  469  gcloud config set compute/zone asia-east1
+  470  kubectl config get-contexts
+  471  kubectl config use-context gke_apac-cs-hybrid-demo7_asia-east1_cluster-name
+  472  kubectl config current-context
+  473  gcloud container clusters get-credentials cluster_name
+  474  gcloud config set compute/region asia-east1
+  475  gcloud config set compute/zone asia-east1
+  476  gcloud container clusters get-credentials cluster_name
+  477  gcloud container clusters get-credentials cluster-name
+  478  kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user $(gcloud config get-value account)
+  479  curl -LO     https://storage.googleapis.com/apigee-public/apigee-hybrid-setup/$(curl -s \
+  480      https://storage.googleapis.com/apigee-public/apigee-hybrid-setup/current-version.txt)/apigeectl_linux_64.tar.gz
+  481  kubectl create clusterrolebinding cluster-admin-binding-tl --clusterrole cluster-admin --user $(gcloud config get-value account)
+  482  ls
+  483  cd apigee
+  484  cd apigeectl/
+  485  ls
+  486  mv apigeectl/* .
+  487  cd apigeectl/
+  488  ls
+  489  cd ..
+  490  ls -l
+  491  rm apigee-as-oidc-idp-for-existing-authentication-service
+  492  rm apigee-as-oidc-idp-for-existing-authentication-service -R
+  493  c
+  494  rm apigee-as-oidc-idp-for-existing-authentication-service -R -y
+  495  rm apigee-as-oidc-idp-for-existing-authentication-ser
+  496  man rm
+  497  rm apigee-as-oidc-idp-for-existing-authentication-service -R -y -f
+  498  rm apigee-as-oidc-idp-for-existing-authentication-service -R -y --f
+  499  rm apigee-as-oidc-idp-for-existing-authentication-service -R -y -F
+  500  man rm
+  501  rm -f apigee-as-oidc-idp-for-existing-authentication-service -R -y -F
+  502  rm -f apigee-as-oidc-idp-for-existing-authentication-service -R 
+  503  ls
+  504  rm apigeectl
+  505  rm -Rf apigeectl
+  506  ls -l
+  507  tar xvzf apigeectl_linux_64.tar.gz
+  508  mv apigeectl_1.1.0-3c87bc2_linux_64 apigeectl
+  509  cd apigeectl/
+  510  ls
+  511  export APIGEECTL_HOME=$PWD
+  512  echo $APIGEECTL_HOME
+  513  mkdir hybrid-files
+  514  cd hybrid-files
+  515  mkdir overrides
+  516  mkdir service-accounts
+  517  mkdir certs
+  518  ln -s $APIGEECTL_HOME/tools tools
+  519  ln -s $APIGEECTL_HOME/config config
+  520  ln -s $APIGEECTL_HOME/templates templates
+  521  ln -s $APIGEECTL_HOME/plugins plugins
+  522  ./tools/create-service-account apigee-metrics ./service-accounts
+  523  y
+  524  clear
+  525  ls -l
+  526  cd service-accounts/
+  527  ls
+  528  cd ..
+  529  ./tools/create-service-account apigee-synchronizer-tl ./service-accounts
+  530  ./tools/create-service-account apigee-synchronizer-tl ./service-accounts gcp_project_id(apac-cs-hybrid-demo7)
+  531  ./tools/create-service-account apigee-synchronizer-tl ./service-accounts gcp_project_id apac-cs-hybrid-demo7
+  532  gcloud config set project apac-cs-hybrid-demo7
+  533  kubectl 
+  534  kubectl get pods
+  535  kubectl get pods -n apigee
+  536  curl https://35.247.157.174:8843/v1/classification/tree -k
+  537  kubectl run --rm
+  538  ping 104.197.27.204
+  539  ping 10.15.245.175
+  540  curl -v -X Get    https://apigee.googleapis.com/v1/organizations/pttep-hybrid-trial-dty9874upp5bv/environments/dev/datalocation   -H "X-Google-DapperTraceInfo: CcaHwkpLlsz8EX0PXkIU1e45HQMAAAAhAAAAAAAAAAA"   -H "Authorization: Bearer $TOKEN"   --data-raw ''
+  541  export TOKEN=ya29.c.Ko8BvQe8VWTnBtEc2sNPb6LfAh8uyVoBif2IhlU7f9PtCXuXfP7IcEiHTby1h_7HLTKJgHofJvbKNyySsetzIjSMSOO1rtF4eMDWI0NTRwNWELWqCdaJr_gKo-wysI9y7KWxsrDgk0UsUQdNfPfhkodE032dulP8o3CvtbVrrBs09kW-UxjUtX9NyQ0Y26L9898
+  542  curl -v -X Get    https://apigee.googleapis.com/v1/organizations/pttep-hybrid-trial-dty9874upp5bv/environments/dev/datalocation   -H "X-Google-DapperTraceInfo: CcaHwkpLlsz8EX0PXkIU1e45HQMAAAAhAAAAAAAAAAA"   -H "Authorization: Bearer $TOKEN"   --data-raw ''
+  543  curl -v -X Get    https://apigee.googleapis.com/v1/organizations/pttep-hybrid-trial-dty9874upp5bv/environments/dev/datalocation   -H "X-Google-DapperTraceInfo: CcaHwkpLlsz8EX0PXkIU1e45HQMAAAAhAAAAAAAAAAA"   -H "Authorization: Bearer $TOKEN"   --data-raw '' > test.txt
+  544  curl -v -X Get    https://apigee.googleapis.com/v1/organizations/pttep-hybrid-trial-dty9874upp5bv/environments/dev/datalocation   -H "X-Google-DapperTraceInfo: CcaHwkpLlsz8EX0PXkIU1e45HQMAAAAhAAAAAAAAAAA"   -H "Authorization: Bearer $TOKEN"   --data-raw '' 
+  545  export $TOKEN=ya29.c.Ko8BvQe8VWTnBtEc2sNPb6LfAh8uyVoBif2IhlU7f9PtCXuXfP7IcEiHTby1h_7HLTKJgHofJvbKNyySsetzIjSMSOO1rtF4eMDWI0NTRwNWELWqCdaJr_gKo-wysI9y7KWxsrDgk0UsUQdNfPfhkodE032dulP8o3CvtbVrrBs09kW-UxjUtX9NyQ0Y26L9898
+  546  export TOKEN=ya29.c.Ko8BvQe8VWTnBtEc2sNPb6LfAh8uyVoBif2IhlU7f9PtCXuXfP7IcEiHTby1h_7HLTKJgHofJvbKNyySsetzIjSMSOO1rtF4eMDWI0NTRwNWELWqCdaJr_gKo-wysI9y7KWxsrDgk0UsUQdNfPfhkodE032dulP8o3CvtbVrrBs09kW-UxjUtX9NyQ0Y26L9898
+  547  curl -v -X Get    https://apigee.googleapis.com/v1/organizations/pttep-hybrid-trial-dty9874upp5bv/environments/dev/datalocation   -H "X-Google-DapperTraceInfo: CcaHwkpLlsz8EX0PXkIU1e45HQMAAAAhAAAAAAAAAAA"   -H "Authorization: Bearer $TOKEN"   --data-raw ''
+  548  gcloud config set project apigee-training-del
+  549  git clone https://github.com/corda/corda.git
+  550  git clone https://github.com/blockapps/strato-getting-started.git
+  551  cd strato-getting-started/
+  552  ls -l
+  553  ls
+  554  ./strato --single
+  555  git clone https://github.com/apigee/apigee-deploy-maven-plugin.git
+  556  cd apigee-deploy-maven-plugin/
+  557  ls
+  558  sudo apt install mvn3.*
+  559  sudo apt install mvn
+  560  sudo apt update
+  561  sudo apt install maven
+  562  mvn -version
+  563  sudo apt install default-jdk
+  564  java -version
+  565  wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
+  566  sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+  567  sudo ln -s /opt/apache-maven-3.6.3 /opt/maven
+  568  sudo nano /etc/profile.d/maven.sh
+  569  mvn -version
+  570  mvn archetype:generate -DgroupId=ToolsQA -DartifactId=DemoMavenProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+  571  ls
+  572  cd samples/mockapi-recommended/src/gateway/Mock-v1
+  573  ls
+  574  cd cd apigee-deploy-maven-plugin/
+  575  c apigee-deploy-maven-plugin/
+  576  cd samples/mockapi-recommended/src/gateway/Mock-v1
+  577  ls
+  578  pwd
+  579  cd apigee-deploy-maven-plugin/
+  580  cd samples/mockapi-recommended/src/gateway/Mock-v1
+  581  ls -l
+  582  cd -
+  583  mvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  584  mvn install -P -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  585  mvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  586  mvn install -Prpd -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  587  mvn install -Pprod  -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  588  mvn package -Ptest  -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  589  pwd
+  590  cd samples/mockapi-recommended/src/ga
+  591  cd ..
+  592  pwd
+  593  cd apigee-deploy-maven-plugin/
+  594  cd samples/mockapi-recommended/src/ga
+  595  cd samples/mockapi-recommended/src/
+  596  cd gateway/
+  597  cd Mock-v1/
+  598  mvn package -Ptest  -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  599  mvn package -Pprod  -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  600  mvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  601  mvn intall -X  -Ptest  -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  602  mvn install -X  -Ptest  -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  603  clear
+  604  npm install totp-generator
+  605  \
+  606  sudo npm install totp-generator
+  607  npm install totp-generator
+  608  pwd
+  609  node mfatoken.js
+  610  gcloud auth application-default print-access-token
+  611  npm install -g npm
+  612  gcloud auth application-default print-access-token
+  613  clear
+  614  mvn install -X  -Ptest  -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  615  clear
+  616  mvn install -Ptest -Dbearer=ya29.a0Adw1xeXedhIPZKczrmThgRFkTM_eTZmY_bG5Gjbm7Lae9iFewDHGPAOZlCiUQtrEI3BP3k6bfvy7ljvB5TiKResuL47yjR7fx5rnQgJbzju9h5Pam7xdOqMsElNFrf5covmYdm0o6eY04o6cDO1hKR7_q4aZAeOgRyDyCzAHwb_yTsiztgxx4yMAZ6LQtOikgMx3-Ko1wNXNNwhZ4YDFcrHntMEHMXbaWtPT49GUmngpYMIpJEmQ5lUOcYh8kWzhpMQThqWHMmFzbag -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  617  mvn install -X -Ptest -Dbearer=ya29.a0Adw1xeXedhIPZKczrmThgRFkTM_eTZmY_bG5Gjbm7Lae9iFewDHGPAOZlCiUQtrEI3BP3k6bfvy7ljvB5TiKResuL47yjR7fx5rnQgJbzju9h5Pam7xdOqMsElNFrf5covmYdm0o6eY04o6cDO1hKR7_q4aZAeOgRyDyCzAHwb_yTsiztgxx4yMAZ6LQtOikgMx3-Ko1wNXNNwhZ4YDFcrHntMEHMXbaWtPT49GUmngpYMIpJEmQ5lUOcYh8kWzhpMQThqWHMmFzbag -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  618  mvn install -X -Ptest -Dbearer=ya29.a0Adw1xeXedhIPZKczrmThgRFkTM_eTZmY_bG5Gjbm7Lae9iFewDHGPAOZlCiUQtrEI3BP3k6bfvy7ljvB5TiKResuL47yjR7fx5rnQgJbzju9h5Pam7xdOqMsElNFrf5covmYdm0o6eY04o6cDO1hKR7_q4aZAeOgRyDyCzAHwb_yTsiztgxx4yMAZ6LQtOikgMx3-Ko1wNXNNwhZ4YDFcrHntMEHMXbaWtPT49GUmngpYMIpJEmQ5lUOcYh8kWzhpMQThqWHMmFzbag -Dorg=pttep-hybrid-trial-dty9874upp5bv -Dauthtype=oauth
+  619  clear
+  620  vi ../shared-pom.xml 
+  621  mvn install -X -Ptest -Dbearer=ya29.a0Adw1xeXedhIPZKczrmThgRFkTM_eTZmY_bG5Gjbm7Lae9iFewDHGPAOZlCiUQtrEI3BP3k6bfvy7ljvB5TiKResuL47yjR7fx5rnQgJbzju9h5Pam7xdOqMsElNFrf5covmYdm0o6eY04o6cDO1hKR7_q4aZAeOgRyDyCzAHwb_yTsiztgxx4yMAZ6LQtOikgMx3-Ko1wNXNNwhZ4YDFcrHntMEHMXbaWtPT49GUmngpYMIpJEmQ5lUOcYh8kWzhpMQThqWHMmFzbag -Dorg=pttep-hybrid-trial-dty9874upp5bv -Dauthtype=oauth
+  622  cd apigee-deploy-maven-plugin/
+  623  cd samples/
+  624  ls
+  625  cd mockapi-recommended/
+  626  ls
+  627  cd src/
+  628  ls
+  629  cd gateway/
+  630  ls
+  631  cd Mock-v1/
+  632  mvn install -X -Ptest -Dbearer=ya29.a0Adw1xeXedhIPZKczrmThgRFkTM_eTZmY_bG5Gjbm7Lae9iFewDHGPAOZlCiUQtrEI3BP3k6bfvy7ljvB5TiKResuL47yjR7fx5rnQgJbzju9h5Pam7xdOqMsElNFrf5covmYdm0o6eY04o6cDO1hKR7_q4aZAeOgRyDyCzAHwb_yTsiztgxx4yMAZ6LQtOikgMx3-Ko1wNXNNwhZ4YDFcrHntMEHMXbaWtPT49GUmngpYMIpJEmQ5lUOcYh8kWzhpMQThqWHMmFzbag -Dorg=pttep-hybrid-trial-dty9874upp5bv -Dauthtype=oauth
+  633  mvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv  -Dauthtype=oauth
+  634  history
+  635  gcloud auth application-default print-access-token
+  636  mvn install -Ptest -Dbearer=ya29.a0Adw1xeWtmgM1Ng-NZBv9eQBo1C_E1Bq-Pv6cTn7UJ9Zgtvwlre3_EdTFEG0hTs_vkMK8FoLDTafPeqKsEXYNAvi0NYEN7_rmmzF7NKVnMcRbAuYSJmsH3SPjLoEb4LOd03Lf-ui6jj8RtPlQ_dGRzhOFN--IenSlyYiUtvC7v93zGKCF71AzZjQT7qu_HvtoQuRLBKZ99fnMcTRyLdT58dHo03fixmWt_jWAe8xWNp7lXfRihZvOMZMe1niQIBD-uFe75mIYhsmDVKA -Dorg=pttep-hybrid-trial-dty9874upp5bv   -Dauthtype=oauth -Denv=Dev
+  637  mvn install -X -Ptest -Dbearer=ya29.a0Adw1xeWtmgM1Ng-NZBv9eQBo1C_E1Bq-Pv6cTn7UJ9Zgtvwlre3_EdTFEG0hTs_vkMK8FoLDTafPeqKsEXYNAvi0NYEN7_rmmzF7NKVnMcRbAuYSJmsH3SPjLoEb4LOd03Lf-ui6jj8RtPlQ_dGRzhOFN--IenSlyYiUtvC7v93zGKCF71AzZjQT7qu_HvtoQuRLBKZ99fnMcTRyLdT58dHo03fixmWt_jWAe8xWNp7lXfRihZvOMZMe1niQIBD-uFe75mIYhsmDVKA -Dorg=pttep-hybrid-trial-dty9874upp5bv   -Dauthtype=oauth -Denv=Dev
+  638  clear
+  639  gcloud auth print-access-token
+  640  history|grep print
+  641  TOKEN=$(gcloud auth print-access-token)
+  642  clear
+  643  mvn install -Ptest -Dbearer=$TOKEN -Dorg=pttep-hybrid-trial-dty9874upp5bv   -Dauthtype=oauth -Denv=Dev
+  644  mvn install -e -X -Ptest -Dbearer=$TOKEN -Dorg=pttep-hybrid-trial-dty9874upp5bv   -Dauthtype=oauth -Denv=Dev
+  645  vi ../shared-pom.xml 
+  646  clear
+  647  vi ../shared-pom.xml 
+  648  mvn install -Ptest -Dbearer=$TOKEN
+  649  mvn install -Ptest -Dbearer=$TOKEN  -Dauthtype=oauth
+  650  clear
+  651  export $TOKEN=eyJhbGciOiJSUzI1NiIsImtpZCI6IjUzYzY2YWFiNTBjZmRkOTFhMTQzNTBhNjY0ODJkYjM4MDBjODNjNjMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiOTYxMDg3MTA0NzkxLW1lYm0za2doMm42bnViZWlwaGMwMjAxbmlta3Y1dGRyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiOTYxMDg3MTA0NzkxLW1lYm0za2doMm42bnViZWlwaGMwMjAxbmlta3Y1dGRyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAwNjczMjY4NzY3NzQ3MDgzMzkxIiwiaGQiOiJnb29nbGUuY29tIiwiZW1haWwiOiJ0b255bG93QGdvb2dsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6ImIzYjZDOV96MDhzcXRnZWNySndXT0EiLCJpYXQiOjE1ODUwNTgzOTUsImV4cCI6MTU4NTA2MTk5NX0.ncUY6qqqEURUaloa92VjqpKD183G0I6IHetzR7X2I425B6Ji2w37zcFVexdOnzIUrLUdoZDuCeweJfM7s6T9zZZlQ_I1sG6F6-2Alv0bGP_h47FXDKEXcAYRv_vmjlup4t_KTyenvPkvFpx0htUHEmvoY73ivG5uAiuZSF4GJtElkdES2h2RCp9nfYHrCsW6U6Iir-ycnQPeXV52D6aORUKPon31QeGiFI6R3KR85WTP9DlvmNvJms15N-MQvVtgeU4RmBG8LpuB7jcQ-RmSvdbqJcip-L_1dCEKGsn7N5C8apB2Fop53m2FIiCPwc4IxbzKcBYzlfTC7xFX_cM5jw
+  652  clear
+  653  history
+  654  TOEKN=eyJhbGciOiJSUzI1NiIsImtpZCI6IjUzYzY2YWFiNTBjZmRkOTFhMTQzNTBhNjY0ODJkYjM4MDBjODNjNjMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiOTYxMDg3MTA0NzkxLW1lYm0za2doMm42bnViZWlwaGMwMjAxbmlta3Y1dGRyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiOTYxMDg3MTA0NzkxLW1lYm0za2doMm42bnViZWlwaGMwMjAxbmlta3Y1dGRyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAwNjczMjY4NzY3NzQ3MDgzMzkxIiwiaGQiOiJnb29nbGUuY29tIiwiZW1haWwiOiJ0b255bG93QGdvb2dsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6ImIzYjZDOV96MDhzcXRnZWNySndXT0EiLCJpYXQiOjE1ODUwNTgzOTUsImV4cCI6MTU4NTA2MTk5NX0.ncUY6qqqEURUaloa92VjqpKD183G0I6IHetzR7X2I425B6Ji2w37zcFVexdOnzIUrLUdoZDuCeweJfM7s6T9zZZlQ_I1sG6F6-2Alv0bGP_h47FXDKEXcAYRv_vmjlup4t_KTyenvPkvFpx0htUHEmvoY73ivG5uAiuZSF4GJtElkdES2h2RCp9nfYHrCsW6U6Iir-ycnQPeXV52D6aORUKPon31QeGiFI6R3KR85WTP9DlvmNvJms15N-MQvVtgeU4RmBG8LpuB7jcQ-RmSvdbqJcip-L_1dCEKGsn7N5C8apB2Fop53m2FIiCPwc4IxbzKcBYzlfTC7xFX_cM5jw
+  655  echo $TOKEN
+  656  export TOKEN=eyJhbGciOiJSUzI1NiIsImtpZCI6IjUzYzY2YWFiNTBjZmRkOTFhMTQzNTBhNjY0ODJkYjM4MDBjODNjNjMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiOTYxMDg3MTA0NzkxLW1lYm0za2doMm42bnViZWlwaGMwMjAxbmlta3Y1dGRyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiOTYxMDg3MTA0NzkxLW1lYm0za2doMm42bnViZWlwaGMwMjAxbmlta3Y1dGRyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAwNjczMjY4NzY3NzQ3MDgzMzkxIiwiaGQiOiJnb29nbGUuY29tIiwiZW1haWwiOiJ0b255bG93QGdvb2dsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6ImIzYjZDOV96MDhzcXRnZWNySndXT0EiLCJpYXQiOjE1ODUwNTgzOTUsImV4cCI6MTU4NTA2MTk5NX0.ncUY6qqqEURUaloa92VjqpKD183G0I6IHetzR7X2I425B6Ji2w37zcFVexdOnzIUrLUdoZDuCeweJfM7s6T9zZZlQ_I1sG6F6-2Alv0bGP_h47FXDKEXcAYRv_vmjlup4t_KTyenvPkvFpx0htUHEmvoY73ivG5uAiuZSF4GJtElkdES2h2RCp9nfYHrCsW6U6Iir-ycnQPeXV52D6aORUKPon31QeGiFI6R3KR85WTP9DlvmNvJms15N-MQvVtgeU4RmBG8LpuB7jcQ-RmSvdbqJcip-L_1dCEKGsn7N5C8apB2Fop53m2FIiCPwc4IxbzKcBYzlfTC7xFX_cM5jw
+  657  echo $TOKEN
+  658  clear
+  659  mvn install -Ptest -Dbearer=$TOKEN  -Dauthtype=oauth
+  660  export TOKEN=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA
+  661  mvn install -Ptest -Dbearer=$TOKEN  -Dauthtype=oauth
+  662  clear
+  663  mvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv  -Dauthtype=oauth -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA
+  664  mvn install -e -X  -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv  -Dauthtype=oauth -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA
+  665  mvn install -e -X  -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA
+  666  mvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv  -Dauthtype=oauth -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA
+  667  clear
+  668  mvn install -e -X  -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA
+  669  mvn install -e -X  -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA -Dauth=oauth
+  670  mvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv  -Dauthtype=oauth -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhAmvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv  -Dauthtype=oauth -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA
+  671  history
+  672  TOKEN=$(gcloud auth print-access-token)
+  673  mvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv  -Dauthtype=oauth -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhAmvn install -Ptest -Dusername=tonylow@google.com -Dpassword=Ty@23071979 -Dorg=pttep-hybrid-trial-dty9874upp5bv  -Dauthtype=oauth -Dbearer=ya29.a0Adw1xeXLIL13ZRN9b5BXhwnkKNpeYcaO1gukL2lNQf-O5hdJBlOxjRLb_e1c9FWlxLbPxeKV0Dd5qy-qD3i6OB9hdNTf29WQDQMBPNXBqJppfkQl2jyDyRzWxo0egxPZiZHvqRnFPXJir6Mn2fnuYsRp-oPR9cxhqWykhA
+  674  ls
+  675  mv gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json apigee-deploy-maven-plugin/samples/mockapi-recommended/src/gateway/Mock-v1/
+  676  cd
+  677  git clone https://github.com/apigee/apigee-deploy-maven-plugin.git
+  678  rm -R apigee-deploy-maven-plugin
+  679  git clone https://github.com/apigee/apigee-deploy-maven-plugin.git
+  680  cd apigee-deploy-maven-plugin/
+  681  cd samples/
+  682  cd mockapi-recommended/
+  683  ls
+  684  cd src/gateway/Mock-v1/
+  685  ls
+  686  install -Ptest -Dfile=gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bv
+  687  mvn install -Ptest -Dfile=gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bv
+  688  mvn install -e -X -Ptest -Dfile=gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bv
+  689  mvn install -e -X -Ptest -Dfile=gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bvls
+  690  ls -l
+  691  cp ~/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2 .
+  692  cp ~/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json  .
+  693  ls
+  694  mvn install -e -X -Ptest -Dfile=gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bvls
+  695  mv  gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json /tmp
+  696  ls /tmp
+  697  ls -l /tmp
+  698  mvn install -e -X -Ptest -Dfile=/tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bvls
+  699  cd ..
+  700  ls
+  701  cp shared-pom.xml shared-pom.xml.back
+  702  more shared-pom.xml
+  703  cd ~/
+  704  ls -l
+  705  rm -r apigee-deploy-maven-plugin
+  706  ls
+  707  ls -l
+  708  rm gcp*
+  709  ls -l
+  710  rm PTT*
+  711  clear
+  712  git clone https://github.com/apigee/apigee-deploy-maven-plugin.git
+  713  cd apigee-deploy-maven-plugin/
+  714  ls
+  715  cd samples
+  716  ls
+  717  cd mockapi-recommended/
+  718  ls
+  719  cd src/gateway/Mock-v1/
+  720  cd ..
+  721  ls
+  722  more shared-pom.xml |grep file
+  723  more shared-pom.xml 
+  724  clear
+  725  git clone -b hybrid https://github.com/apigee/apigee-deploy-maven-plugin.git
+  726  cd cd /
+  727  cd ~/
+  728  rm -r apigee-deploy-maven-plugin/
+  729  ls
+  730  git clone -b hybrid https://github.com/apigee/apigee-deploy-maven-plugin.git
+  731  ls
+  732  cd apigee-deploy-maven-plugin/
+  733  ls
+  734  cd samples/
+  735  cd 
+  736  cd -
+  737  cd mockapi-recommended/
+  738  ls
+  739  cd src/gateway/
+  740  ls
+  741  more shared-pom.xml 
+  742  cd ..
+  743  cd src/gateway/Mock-v1/
+  744  ls
+  745  install -Ptest -Dfile=/tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bv
+  746  mvn install -Ptest -Dfile=/tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bv
+  747  mvn install -X -e -Ptest -Dfile=/tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json -Dauthtype=oauth  -Denv=test -Dorgname=pttep-hybrid-trial-dty9874upp5bv
+  748  more  /tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json 
+  749  ls /tmp
+  750  ls ~/
+  751  mv ~/apac-cs-hybrid-demo7-7f5b73744def.json /tmp
+  752  install -Ptest -Dfile=/tmp/apac-cs-hybrid-demo7-7f5b73744def.json -Dauthtype=oauth  -Denv=test -Dorgname=apac-cs-hybrid-demo8
+  753  mvn install -Ptest -Dfile=/tmp/apac-cs-hybrid-demo7-7f5b73744def.json -Dauthtype=oauth  -Denv=test -Dorgname=apac-cs-hybrid-demo8
+  754  vi /tmp/apac-cs-hybrid-demo7-7f5b73744def.json 
+  755  mvn install -Ptest -Dfile=/tmp/apac-cs-hybrid-demo7-7f5b73744def.json -Dauthtype=oauth  -Denv=test -Dorgname=apac-cs-hybrid-demo8
+  756  gcloud projects list
+  757  pwd
+  758  install -Ptest -Dfile=/tmp/apac-cs-hybrid-demo7-7f5b73744def.json -Dauthtype=oauth  -Denv=test -Dorgname=apac-cs-hybrid-demo8 -Dproject.basedir=/home/tonylow/apigee-deploy-maven-plugin/samples/mockapi-recommended/src/gateway/Mock-v1
+  759  mvn -e -X install -Ptest -Dfile=/tmp/apac-cs-hybrid-demo7-7f5b73744def.json -Dauthtype=oauth  -Denv=test -Dorgname=apac-cs-hybrid-demo8 -Dproject.basedir=/home/tonylow/apigee-deploy-maven-plugin/samples/mockapi-recommended/src/gateway/Mock-v1
+  760  mvn -e -X install -Ptest -Dfile=/tmp/apac-cs-hybrid-demo7-7f5b73744def.json -Dauthtype=oauth  -Denv=test -Dorgname=apac-cs-hybrid-demo7 -Dproject.basedir=/home/tonylow/apigee-deploy-maven-plugin/samples/mockapi-recommended/src/gateway/Mock-v1
+  761  ls -l ~/*.json
+  762  mv /home/tonylow/apac-cs-hybrid-demo7-1f2dc0341efd.json /tmp/project-admin.json
+  763  mvn -e -X install -Ptest -Dfile=/tmp/project-admin.json    -Dauthtype=oauth  -Denv=test -Dorgname=apac-cs-hybrid-demo7 -Dproject.basedir=/home/tonylow/apigee-deploy-maven-plugin/samples/mockapi-recommended/src/gateway/Mock-v1
+  764  vi ../shared-pom.xml 
+  765  mvn -e -X install -Ptest -Dfile=/tmp/project-admin.json    -Dauthtype=oauth  -Denv=test -Dorgname=apac-cs-hybrid-demo7 -Dproject.basedir=/home/tonylow/apigee-deploy-maven-plugin/samples/mockapi-recommended/src/gateway/Mock-v1
+  766  vi ../shared-pom.xml 
+  767  mvn -e -X install -Ptest -Dfile=/tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json   -Dauthtype=oauth  -Denv=test
+  768  mvn -e -X install -Ptest -Dfile=/tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json   -Dauthtype=oauth  -Denv=dev
+  769  vi ../shared-pom.xml 
+  770  mvn -e -X install -Ptest -Dfile=/tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json   -Dauthtype=oauth  -Denv=dev
+  771  vi ../shared-pom.xml 
+  772  mvn -e -X install -Ptest -Dfile=/tmp/gcp-pttep-th-it-apimgmt-dev-ef9a58619cc2.json   -Dauthtype=oauth  -Denv=dev -Dorg=pttep-hybrid-trial-dty9874upp5bv
+  773  history | grep clone
+  774  npm install
+  775  npm start
+  776  gcloud beta compute ssh --zone "europe-west1-b" "learning-gke" --project "apigee-training-del"
+  777  gcloud services enable compute.googleapis.com     container.googleapis.com     containerregistry.googleapis.com
+  778  gcloud config set compute/zone us-east1-d
+  779  gcloud config set compute/region us-east1
+  780  gcloud container clusters create guestbook       --cluster-version 1.13       --num-nodes 4       --scopes cloud-platform
+  781  gcloud container clusters create guestbook --cluster-version 1.14       --num-nodes 4       --scopes cloud-platform
+  782  cd
+  783  ls -l
+  784  rm -r openshift-origin-gcp
+  785  ls -l
+  786  rm package-lock.json
+  787  rm pcf-kelatov-pw.key
+  788  rm reg.cfg
+  789  rm  test.txt
+  790  ls -l
+  791  rm istio-1.0.2-linux.tar.gz
+  792  rm istio*
+  793  ls -l
+  794  rm -r Java-WebSocket/
+  795  rm -r tornado-websocket-example/
+  796  rm -fr tornado-websocket-example
+  797  ls -l
+  798  rm -rf Qwik/
+  799  ls -l
+  800  rm IMG_5097.HEIC
+  801  rm -fr istio*
+  802  ls -l
+  803  rm -rf psd*
+  804  rm README-cloudshell.txt 
+  805  rm -rf strato-getting-started
+  806  ls -l
+  807  rm -rf apigee*
+  808  ls
+  809  ls -l
+  810  rm -rf corda
+  811  ls -l
+  812  clear
+  813  cd ~/spring-boot-docker/examples/kubernetes-1.10
+  814  ls -l
+  815  kubectl apply -f redis-deployment.yaml
+  816  kubectl get pods
+  817  kubectl delete pod redis-...
+  818  kubectl delete pod redis-*
+  819  kubectl get pods
+  820  kubectl delete pod redis-7c7c89f57b-8dbdv
+  821  kubectl get pods
+  822  kubectl delete pod redis-7c7c89f57b-rh44j
+  823  kubectl get pods
+  824  kubectl get pods -owide
+  825  gcloud compute ssh gke-guestbook-default-pool-97529a14-6l0s 
+  826  kubectl get pods 
+  827  gcloud container clusters get-credentials guestbook --zone us-east1-d --project apigee-training-del
+  828  gcloud compute ssh gke-guestbook-default-pool-97529a14-6l0s 
+  829  gcloud container clusters get-credentials guestbook --zone us-east1-d --project apigee-training-del
+  830  sudo docker ps
+  831  gcloud container clusters get-credentials guestbook --zone us-east1-d --project apigee-training-del
+  832  sudo docker ps
+  833  kubectl get pods 
+  834  kubectl get pods -owide
+  835  gcloud compute ssh gke-guestbook-default-pool-97529a14-6l0s 
+  836  kubectl exec -ti  gke-guestbook-default-pool-97529a14-6l0s   /bin/bash
+  837  ssh: connect to host 35.227.28.208 port 22: Connection timed out
+  838  kubectl exec -ti  gke-guestbook-default-pool-97529a14-6l0s   /bin/bash
+  839  kubectl exec -ti  redis-7c7c89f57b-n7svq  /bin/bash
+  840  kub
+  841  kube
+  842  kubectl logs redis-7c7c89f57b-n7svq
+  843  kubectl logs -f redis-...
+  844  kubectl logs -f redis-7c7c89f57b-n7svq
+  845  kubectl apply -f redis-service.yaml --record
+  846  kubectl get services
+  847  gcloud compute disks create mysql-disk --size 200GB --zone=us-east1-d
+  848  kubectl apply -f helloworldservice-deployment-v1.yaml                 -f helloworldservice-service.yaml                 --record
+  849  kubectl apply -f guestbookservice-deployment.yaml                 -f guestbookservice-service.yaml                 --record
+  850  kubectl get deployment
+  851  kubectl get pods
+  852  kubectl get rs
+  853  kubectl exec -ti guestbook-service... /bin/bash
+  854  kubectl exec -ti  guestbook-service-5db49b7cb7-pv5sv  /bin/bash
+  855  exit
+  856  gcloud config set compute/zone us-east1-d
+  857  gcloud config set compute/region us-east1
+  858  ubectl apply -f helloworldui-deployment-v1.yaml                  -f helloworldui-service.yaml                  --record
+  859  kubectl apply -f helloworldui-deployment-v1.yaml                  -f helloworldui-service.yaml                  --record
+  860  pwd
+  861  ls
+  862  cd spring-boot-docker/
+  863  ls
+  864  cd examples
+  865  ls
+  866  cd cd kubernetes-1.10
+  867  cd kubernetes-1.10
+  868  ls
+  869  kubernetes-1.10
+  870  kubectl get services helloworld-ui
+  871  kubectl get services 
+  872  kubectl get services helloworld
+  873  kubectl get services helloworld-service
+  874  kubectl apply -f helloworldui-deployment-v1.yaml                  -f helloworldui-service.yaml                  --record
+  875  kubectl get services helloworld-ui
+  876  kubectl get nodes
+  877  gcloud services enable cloudbuild.googleapis.com
+  878  git clone https://github.com/firebase/friendlychat-web
+  879  ls -l
+  880  cd friendlychat-web/
+  881  ls -l
+  882  gcloud beta compute ssh --zone "europe-west1-b" "testvm" --project "apigee-training-del"
+  883  telnet 5.195.181.206
+  884  telnet 35.195.181.206
+  885  clear
+  886  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  887  git clone https://github.com/nvm-sh/nvm.git .nvm
+  888  nvm install node # "node" is an alias for the latest version
+  889  npm -g install @angular/cli
+  890  npm -g install firebase-tools
+  891  firebase --version
+  892  firebase
+  893  pwd
+  894  ls
+  895  git clone https://github.com/GoogleCloudPlatform/stackdriver-slo-to-bigquery
+  896  pwd
+  897  ls
+  898  ls -l
+  899  cd stackdriver-slo-to-bigquery/
+  900  ls
+  901  ls -l
+  902  ./deploy.sh --project $project --timezone Europe/London
+  903  echo $project
+  904  pwd
+  905  PROJECT_ID=$(gcloud info --format='value(config.project)')
+  906  echo $project
+  907  export project=apigee-training-del
+  908  echo $project
+  909  ls
+  910  cd stackdriver-slo-to-bigquery/
+  911  history
+  912  whoami
+  913  export $project
+  914  echo  $project
+  915  export $project=apigee-training-del
+  916  export project=apigee-training-del
+  917  echo  $project
+  918  ./deploy.sh --project $project --timezone Europe/London
+  919  curl 10.132.0.36 8000
+  920  gcloud sql instances patch devportalconfig --assign-ip
+  921  gcloud sql connect devportalconfig --user=root --quiet
+  922  clear
+  923  cloud sql instances patch devportalconfig --authorized-networks=35.238.254.180
+  924  gcloud sql instances patch devportalconfig --authorized-networks=35.238.254.180
+  925  gcloud beta compute ssh --zone "europe-west1-b" "devtest" --project "apigee-training-del"
+  926  ls -l
+  927  pwd
+  928  git clone https://github.com/contentful/product-catalogue-js.git
+  929  npm install http-server
+  930  http-server
+  931  ls -l
+  932  cd product-catalogue-js/
+  933  python server.py
+  934  ls -l
+  935  su 
+  936  npm install http-server
+  937  http-server
+  938  ls -l
+  939  npm start
+  940  cd ..
+  941  git clone https://github.com/contentful/starter-gatsby-blog.git
+  942  cd starter-gatsby-blog/
+  943  npm install
+  944  npm cache verify
+  945  npm install
+  946  ls -l
+  947  rm package-lock.json 
+  948  npm cache verify
+  949  npm install
+  950  npm run dev
+  951  npm run setup -- --spaceId 2tkbo2hk9tmv --deliveryToken hjmdte7Pi_Kun1VrfgLuh1xROyLeqgNP0w7wyeoW8oA --managementToken CFPAT--cj-pBK4Ds9Gyfvk9XdSo4ej-vUx4QWQyTKfeW-RRw4
+  952  npm run dev
+  953  git clone https://github.com/FandiAR/react-marketplace.git
+  954  cd react-marketplace/
+  955  ls
+  956  npm instsll
+  957  npm install
+  958  npm start
+  959  pwd
+  960  si
+  961  su
+  962  sudo passwd roor
+  963  sudo passwd root
+  964  curl 10.132.0.36:3001
+  965  su
+  966  gcloud beta compute ssh --zone "europe-west1-b" "devtest" --project "apigee-training-del"
+  967  python
+  968  gcloud beta compute ssh --zone "europe-west1-b" "devtest" --project "apigee-training-del"
+  969  clear
+  970  python
+  971  clear
+  972  python -m SimpleHTTPServer 8000
+  973  clear
+  974  vi index.html
+  975  python -m SimpleHTTPServer 8000
+  976  clear
+  977  gcloud app create --project=[YOUR_PROJECT_ID]
+  978  gcloud config set project PROJECT_ID
+  979  gcloud app create 
+  980  git clone https://github.com/GoogleCloudPlatform/python-docs-samples
+  981  cd pytj
+  982  cd python-docs-samples/
+  983  ls -l
+  984  cd hell
+  985  cd hello_world
+  986  ls -l
+  987  cd appengine/
+  988  ls
+  989  cd standard
+  990  ls
+  991  cd hello_world/
+  992  ls
+  993  gcloud app deploy
+  994  gcloud app browse
+  995  git clone
+  996  git clone https://github.com/jsonform/jsonform.git
+  997  python -m SimpleHTTPServer
+  998  gcloud beta compute ssh --zone "europe-west1-b" "devtest" --project "apigee-training-del"gcloud beta compute ssh --zone "europe-west1-b" "devtest" --project "apigee-training-del"
+  999  phamtonjs
+ 1000  sudo yum install gcc gcc-c++ make flex bison gperf ruby   openssl-devel freetype-devel fontconfig-devel libicu-devel sqlite-devel   libpng-devel libjpeg-devel
+ 1001  ls
+ 1002  cd sample
+ 1003  mkdir sample
+ 1004  mv apitemplate_rev1_2020_07_11.zip  sample
+ 1005  cd sample
+ 1006  zip
+ 1007  zip -x apitemplate_rev1_2020_07_11.zip 
+ 1008  ls -l
+ 1009  zip -x apitemplate_rev1_2020_07_11.zip 
+ 1010  zip x apitemplate_rev1_2020_07_11.zip 
+ 1011  ls -l
+ 1012  rm x.zip
+ 1013  l sl-l
+ 1014  ls -l
+ 1015  zip 
+ 1016  unzip
+ 1017  unzip apitemplate_rev1_2020_07_11.zip 
+ 1018  ls -l
+ 1019  cd apiproxy/
+ 1020  ls -l
+ 1021  cd ..
+ 1022  git clone https://github.com/tonylow/apigeetemplate.git
+ 1023  mv -R  apiproxy/* apitemplate
+ 1024  mv apiproxy/* apitemplate
+ 1025  mv apiproxy/* apitemplate/
+ 1026  ls -l
+ 1027  mv apiproxy/* apigeetemplate
+ 1028  cd apigeetemplate/
+ 1029  ls l
+ 1030  ls -l
+ 1031  git add
+ 1032  git add *
+ 1033  git checkin
+ 1034  git ==help
+ 1035  git --help
+ 1036  git add *
+ 1037  git commit
+ 1038  git config --global user.email "tonylow_sg@yahoo.com.sg"
+ 1039  git commit
+ 1040  git config user.email "tonylow_sg@yahoo.com.sg"
+ 1041  git commit 
+ 1042  ls -l
+ 1043  cd ..
+ 1044  ls -l
+ 1045  mv apigeetemplate apigeetemplate1
+ 1046  git checkout https://github.com/tonylow/apigeetemplate.git
+ 1047  git checkout 
+ 1048  mkdir test
+ 1049  cd test
+ 1050  git init
+ 1051  git checkout 
+ 1052  https://github.com/tonylow/apigeetemplate.gi
+ 1053  git fetch
+ 1054  cd ..
+ 1055  git fetch
+ 1056  git checkout master
+ 1057  git pull origin master
+ 1058  ls
+ 1059  cd apigeetemplate1/
+ 1060  git remote
+ 1061  git remote/master
+ 1062  git push 
+ 1063  tonylow_sg@yahoo.com.sg 
+ 1064  git push
+ 1065  more ~/.ssh/id_rsa.pub
+ 1066  git push 
+ 1067  ssh -T git@github.com
+ 1068  git push
+ 1069  git remote set-url origin git@github.com:tonylow/your-repository.git
+ 1070  git commit -am "Tempalte"
+ 1071* 
+ 1072  git remote set-url origin git@github.com:tonylow/apigeeconfig.git
+ 1073  git push 
+ 1074  git pull
+ 1075  ls -l
+ 1076  git add *
+ 1077  git commit
+ 1078  git push
+ 1079  ls -l
+ 1080  git remote
+ 1081  git check 
+ 1082  git checkout
+ 1083  git pull
+ 1084  git clean
+ 1085  git clean -f
+ 1086  git pull
+ 1087  git pull origin master --allow-unrelated-histories
+ 1088  git config user.name "tonylow"
+ 1089  git pull origin master --allow-unrelated-histories
+ 1090  cd ..
+ 1091  pwd
+ 1092  git pull git@github.com:tonylow/apigeeconfig.git
+ 1093  ls -l
+ 1094  cd sample
+ 1095  ls -l
+ 1096  mkdir template
+ 1097  cd template/
+ 1098  git init
+ 1099  git pull git@github.com:tonylow/apigeeconfig.git
+ 1100  ls -l
+ 1101  git push
+ 1102  git remote
+ 1103  ls -l
+ 1104  vi test.txt
+ 1105  git add *
+ 1106  git commit
+ 1107  git push
+ 1108  git config user.name "tonylow"
+ 1109  git push
+ 1110  git commit
+ 1111  es
+ 1112  git commit
+ 1113  git push 
+ 1114  git push origin
+ 1115  git push --set-upstream origin master
+ 1116  git push 
+ 1117  git push origin master
+ 1118  git push git@github.com:tonylow/apigeeconfig.git
+ 1119  git push --set-upstream git@github.com:tonylow/apigeeconfig.git master
+ 1120  git config --global user.email "3192823+tonylow@users.noreply.github.com"
+ 1121  git commit --amend --reset-author
+ 1122  git push 
+ 1123  history
+ 1124  git push --set-upstream git@github.com:tonylow/apigeeconfig.git master
+ 1125  history
+ 1126  history > test.scripts
