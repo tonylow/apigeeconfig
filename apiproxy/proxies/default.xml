@@ -14,7 +14,7 @@
         <Response/>
     </PostFlow>
     <HTTPProxyConnection>
-        <BasePath>/apitemplate</BasePath>
+        <BasePath>/{% BasePath %}{% endblock %}</BasePath>
         <VirtualHost>secure</VirtualHost>
         <VirtualHost>default</VirtualHost>
     </HTTPProxyConnection>
